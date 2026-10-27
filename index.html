@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#091321">
+  <title>MLB Command Center | Scores & Statistics</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#" aria-label="MLB Command Center">
+        <span class="brand-icon">⚾</span>
+        <span>MLB <strong>COMMAND CENTER</strong></span>
+      </a>
+      <span class="header-tag">BASEBALL. EVERY INNING.</span>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">THE HOME OF BASEBALL</p>
+      <h1>Every pitch.<br><span>Every game.</span></h1>
+      <p class="hero-description">
+        Your destination for MLB scores, schedules,
+        standings, teams, and game information.
+      </p>
+    </section>
+
+    <nav class="tabs" aria-label="Main navigation">
+      <button class="tab active" data-tab="scores">Scores & Schedule</button>
+      <button class="tab" data-tab="standings">Standings</button>
+      <button class="tab" data-tab="teams">MLB Teams</button>
+    </nav>
+
+    <section id="scores-panel" class="panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">THE SCOREBOARD</p>
+          <h2>MLB Games</h2>
+        </div>
+        <button id="refresh-btn" class="secondary-btn">
+          ↻ Refresh scores
+        </button>
+      </div>
+
+      <div class="toolbar">
+        <div class="date-navigation">
+          <button id="prev-date" aria-label="Previous day">‹</button>
+          <input type="date" id="game-date" aria-label="Game date">
+          <button id="next-date" aria-label="Next day">›</button>
+          <button id="today-btn">Today</button>
+        </div>
+
+        <select id="team-filter" aria-label="Filter games by team">
+          <option value="all">All Teams</option>
+        </select>
+      </div>
+
+      <div id="score-message" class="message" role="status">
+        Loading MLB games...
+      </div>
+      <div id="scoreboard" class="game-grid"></div>
+      <p id="last-updated" class="updated"></p>
+    </section>
+
+    <section id="standings-panel" class="panel" hidden>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">THE PENNANT RACE</p>
+          <h2>League Standings</h2>
+        </div>
+        <span id="standings-season" class="season-label"></span>
+      </div>
+
+      <div id="standings-message" class="message" role="status">
+        Loading standings...
+      </div>
+      <div id="standings-grid" class="standings-grid"></div>
+    </section>
+
+    <section id="teams-panel" class="panel" hidden>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">ALL 30 CLUBS</p>
+          <h2>MLB Teams</h2>
+        </div>
+      </div>
+
+      <input id="team-search" class="search-input"
+             type="search" placeholder="Search for a team..."
+             aria-label="Search MLB teams">
+
+      <div id="teams-message" class="message" role="status">
+        Loading teams...
+      </div>
+      <div id="teams-grid" class="teams-grid"></div>
+    </section>
+  </main>
+
+  <dialog id="game-dialog" class="game-dialog">
+    <div class="dialog-top">
+      <h2>Game Center</h2>
+      <button id="close-dialog" class="close-btn"
+              aria-label="Close game details">✕</button>
+    </div>
+    <div id="game-details"></div>
+  </dialog>
+
+  <footer class="site-footer">
+    <p>MLB COMMAND CENTER</p>
+    <p>Independent baseball information hub.
+       Not affiliated with Major League Baseball.</p>
+    <p>Game information supplied by MLB Stats API.</p>
+  </footer>
+</body>
+</html>
